@@ -9,7 +9,7 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/scrap/cryptosByName/Bitcoin"
+          "https://tdat901-git-main-daarunias-projects.vercel.app/scrap/cryptosByName/Bitcoin"
         );
 
         console.log(response);

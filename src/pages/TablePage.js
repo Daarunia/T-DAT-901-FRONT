@@ -8,7 +8,7 @@ const TablePage = () => {
   useEffect(() => {
     const fetchCryptos = async () => {
       try {
-        const response = await fetch("http://localhost:3001/scrap/allCryptos");
+        const response = await fetch("https://tdat901-git-main-daarunias-projects.vercel.app/scrap/allCryptos");
         const data = await response.json();
         setCryptos(data);
       } catch (error) {
