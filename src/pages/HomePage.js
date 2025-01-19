@@ -4,8 +4,6 @@ import LineChart from "../components/LineChart";
 import DonutChart from "../components/DonutChart";
 import { Toggle } from "@fluentui/react";
 
-
-
 const TablePage = () => {
   const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,7 +16,7 @@ const TablePage = () => {
   useEffect(() => {
     const fetchCryptos = async () => {
       try {
-        const response = await fetch("http://localhost:3001/scrap/allCryptos");
+        const response = await fetch("https://tdat901.vercel.app/scrap/allCryptos");
         const data = await response.json();
         setCryptos(data);
 
@@ -46,7 +44,7 @@ const TablePage = () => {
   const fetchChartData = async (cryptoName, range) => {
     try {
       const response = await fetch(
-        `http://localhost:3001/scrap/cryptosByName/${cryptoName}?range=${range}`
+        `https://tdat901.vercel.app/scrap/cryptosByName/${cryptoName}?range=${range}`
       );
       const data = await response.json();
 
@@ -71,7 +69,7 @@ const TablePage = () => {
   const fetchMarketCapData = async (cryptoName) => {
     try {
       const response = await fetch(
-        "http://localhost:3001/analytics/allCryptos"
+        "https://tdat901.vercel.app/analytics/allCryptos"
       );
       const data = await response.json();
 
