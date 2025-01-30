@@ -1,11 +1,19 @@
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 
+// Fonction pour formater les nombres avec des unités adaptées
+const formatNumber = (num) => {
+    if (num >= 1e9) return (num / 1e9).toFixed(1) + "B";
+    if (num >= 1e6) return (num / 1e6).toFixed(1) + "M";
+    if (num >= 1e3) return (num / 1e3).toFixed(1) + "K";
+    return num.toString();
+};
+
 const DonutChart = ({ data }) => {
     const COLORS = ["#0088FE", "#FF8042"];
 
-    const renderCustomLabel = ({ name, percent }) => {
-        return `${name}: ${(percent * 100).toFixed(1)}%`;
+    const renderCustomLabel = ({ name, value }) => {
+        return `${name}: ${formatNumber(value)}`;
     };
 
     return (
@@ -25,7 +33,7 @@ const DonutChart = ({ data }) => {
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                 </Pie>
-                <Tooltip formatter={(value) => value.toLocaleString()} />
+                <Tooltip formatter={(value) => formatNumber(value)} />
             </PieChart>
         </ResponsiveContainer>
     );
